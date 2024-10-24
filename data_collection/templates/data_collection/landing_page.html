@@ -1,0 +1,61 @@
+{% extends 'data_collection/base.html' %}
+
+{% block title %}Landing Page{% endblock %}
+
+{% block content %}
+<h2>Researchers</h2>
+<a href="{% url 'data_collection:add_researcher' %}" class="btn btn-primary">Add Researcher</a>
+<table class="table table-bordered mt-3">
+    <thead class="thead-dark">
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for researcher in researchers %}
+        <tr>
+            <td>{{ researcher.name }}</td>
+            <td>{{ researcher.email }}</td>
+            <td>
+                <a href="{% url 'data_collection:edit_researcher' researcher.pk %}" class="btn btn-warning btn-sm">Edit</a>
+                <a href="{% url 'data_collection:delete_researcher' researcher.pk %}" class="btn btn-danger btn-sm">Delete</a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="3">No researchers available.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<h2>Research Projects</h2>
+<a href="{% url 'data_collection:add_project' %}" class="btn btn-primary">Add Project</a>
+<table class="table table-bordered mt-3">
+    <thead class="thead-dark">
+        <tr>
+            <th>Title</th>
+            <th>Researcher</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for project in projects %}
+        <tr>
+            <td>{{ project.title }}</td>
+            <td>{{ project.researcher.name }}</td>
+            <td>
+                <a href="{% url 'data_collection:edit_project' project.pk %}" class="btn btn-warning btn-sm">Edit</a>
+                <a href="{% url 'data_collection:delete_project' project.pk %}" class="btn btn-danger btn-sm">Delete</a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="3">No projects available.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

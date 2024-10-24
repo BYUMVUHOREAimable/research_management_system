@@ -1,0 +1,22 @@
+{% extends 'data_collection/base.html' %}
+
+{% block title %}Edit Researcher{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Edit Researcher</h2>
+    <form method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" class="form-control" name="name" value="{{ researcher.name }}" required>
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" class="form-control" name="email" value="{{ researcher.email }}" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Update Researcher</button>
+    </form>
+    <a href="{% url 'data_collection:landing_page' %}" class="btn btn-secondary mt-3">Back</a>
+</div>
+{% endblock %}

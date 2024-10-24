@@ -1,0 +1,20 @@
+{% extends 'data_collection/base.html' %}
+
+{% block title %}Add Researcher{% endblock %}
+
+{% block content %}
+<h2>Add Researcher</h2>
+<form method="POST">
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" class="form-control" name="name" required>
+    </div>
+    <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" class="form-control" name="email" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Add Researcher</button>
+    <a href="{% url 'data_collection:landing_page' %}" class="btn btn-secondary">Cancel</a>
+</form>
+{% endblock %}

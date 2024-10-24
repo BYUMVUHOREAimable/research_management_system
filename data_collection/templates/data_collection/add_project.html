@@ -1,0 +1,28 @@
+{% extends 'data_collection/base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Add Project</h2>
+    <form method="POST">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="title" class="form-label">Project Title:</label>
+            <input type="text" id="title" name="title" class="form-control" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="researcher" class="form-label">Select Researcher:</label>
+            <select id="researcher" name="researcher" class="form-select" required>
+                <option value="">Select a researcher</option>
+                {% for researcher in researchers %}
+                    <option value="{{ researcher.id }}">{{ researcher.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Add Project</button>
+    </form>
+
+    <a href="{% url 'data_collection:landing_page' %}" class="btn btn-secondary mt-3">Back to Landing Page</a>
+</div>
+{% endblock %}

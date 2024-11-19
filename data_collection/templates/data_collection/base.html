@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Research Management System{% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .header {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+        .footer {
+            background-color: #343a40;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>Research Management System</h1>
+        <nav>
+            <a href="{% url 'data_collection:landing_page' %}" class="btn btn-light">Home</a>
+            <a href="{% url 'data_collection:add_researcher' %}" class="btn btn-light">Add Researcher</a>
+            <a href="{% url 'data_collection:add_project' %}" class="btn btn-light">Add Project</a>
+            <a href="{% url 'data_collection:project_list' %}" class="btn btn-light">View All Projects</a>
+            <a href="{% url 'data_collection:signup' %}" class="btn btn-light">Signup</a>
+            <a href="{% url 'account_login' %}" class="btn btn-light">Login</a>
+        </nav>
+    </div>
+
+    <div class="container mt-4">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    <div class="footer">
+        <p>&copy; {% now "Y" %} Research Management System. All rights reserved.</p>
+        <p>Designed by BYUMVUHORE Aimable</p>
+    </div>
+
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+</body>
+</html>

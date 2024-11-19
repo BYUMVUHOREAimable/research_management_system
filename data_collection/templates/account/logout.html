@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Logged Out</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+</head>
+<body>
+    <div class="container mt-4">
+        <h2>You have been logged out</h2>
+        <a href="{% url 'account_login' %}" class="btn btn-primary">Log In Again</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Collection List</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-5">Data Collection List</h1>
+        <table class="table mt-3">
+            <thead>
+                <tr>
+                    <th>Researcher</th>
+                    <th>Project</th>
+                    <th>Data Collected</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for data in data_collections %}
+                <tr>
+                    <td>{{ data.researcher.name }}</td>
+                    <td>{{ data.project.title }}</td>
+                    <td>{{ data.data_collected }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a class="btn btn-secondary mt-3" href="{% url 'landing_page' %}">Back to Landing Page</a>
+    </div>
+</body>
+</html>

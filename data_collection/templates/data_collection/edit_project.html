@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Project</title>
+</head>
+<body>
+    <h1>Edit Project: {{ project.title }}</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <label for="title">Project Title:</label>
+        <input type="text" id="title" name="title" value="{{ project.title }}" required>
+        <button type="submit">Update Project</button>
+    </form>
+    <a href="{% url 'data_collection:landing_page' %}">Cancel</a>
+</body>
+</html>

@@ -1,0 +1,15 @@
+{% extends 'data_collection/base.html' %}
+
+{% block title %}Delete Project{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Delete Project</h2>
+    <p>Are you sure you want to delete the project "{{ project.title }}"?</p>
+    <form method="POST">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Delete</button>
+        <a href="{% url 'data_collection:landing_page' %}" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
+{% endblock %}

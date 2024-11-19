@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Researchers</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+</head>
+<body>
+    <div class="container mt-4">
+        <h1>Researchers</h1>
+        <a href="{% url 'add_researcher' %}" class="btn btn-primary mb-3">Add Researcher</a>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Institution</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for researcher in researchers %}
+                    <tr>
+                        <td>{{ researcher.name }}</td>
+                        <td>{{ researcher.email }}</td>
+                        <td>{{ researcher.institution }}</td>
+                        <td>
+                            <a href="{% url 'edit_researcher' researcher.pk %}" class="btn btn-warning">Edit</a>
+                            <form action="{% url 'delete_researcher' researcher.pk %}" method="POST" style="display:inline;">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+</body>
+</html>

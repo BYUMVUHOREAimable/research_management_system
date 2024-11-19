@@ -1,0 +1,31 @@
+{% extends 'data_collection/base.html' %}
+
+{% block title %}Project List{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1>Research Projects</h1>
+    
+    <a href="{% url 'data_collection:add_project' %}" class="btn btn-primary mb-3">Add Project</a>
+    
+    <div class="list-group">
+        {% for project in projects %}
+            <div class="list-group-item d-flex justify-content-between align-items-center">
+                <span>
+                    <strong>{{ project.title }}</strong> ({{ project.researcher.name }})
+                </span>
+                <span>
+                    <a href="{% url 'data_collection:edit_project' project.pk %}" class="btn btn-sm btn-warning">Edit</a>
+                    <a href="{% url 'data_collection:delete_project' project.pk %}" class="btn btn-sm btn-danger">Delete</a>
+                </span>
+            </div>
+        {% empty %}
+            <div class="list-group-item">
+                No projects available.
+            </div>
+        {% endfor %}
+    </div>
+
+    <a href="{% url 'data_collection:landing_page' %}" class="btn btn-secondary mt-3">Back to Landing Page</a>
+</div>
+{% endblock %}
